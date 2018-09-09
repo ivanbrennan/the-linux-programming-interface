@@ -1,11 +1,17 @@
 CC = gcc
 
-all: copy
+programs = copy seek_io
+lib = ../lib
 
-copy: copy.c ../lib/error_functions.c
-	$(CC) $+ -o $@ -I../lib
+all: $(programs)
+
+copy: copy.c $(lib)/error_functions.c
+	$(CC) $+ -o $@ -I$(lib)
+
+seek_io: seek_io.c $(lib)/error_functions.c $(lib)/get_num.c
+	$(CC) $+ -o $@ -I$(lib)
 
 clean:
-	rm -f copy
+	rm -f $(programs)
 
 .PHONY: all clean
