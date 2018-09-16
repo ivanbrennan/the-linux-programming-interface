@@ -18,7 +18,7 @@ sparse-copy: sparse-copy.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 large_file: large_file.c $(lib)/error_functions.c
-	$(CC) $+ -o $@ -I$(lib)
+	$(CC) $+ -o $@ -I$(lib) -D_FILE_OFFSET_BITS=64
 
 clean:
 	rm -f $(programs)
