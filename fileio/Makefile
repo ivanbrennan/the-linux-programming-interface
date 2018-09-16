@@ -1,6 +1,6 @@
 CC = gcc
 
-programs = copy seek_io tee sparse-copy
+programs = copy seek_io tee sparse-copy large_file
 lib = ../lib
 
 all: $(programs)
@@ -15,6 +15,9 @@ tee: tee.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 sparse-copy: sparse-copy.c $(lib)/error_functions.c
+	$(CC) $+ -o $@ -I$(lib)
+
+large_file: large_file.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 clean:
