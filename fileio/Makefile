@@ -1,6 +1,6 @@
 CC = gcc
 
-programs = copy seek_io tee sparse-copy large_file
+programs = copy seek_io tee sparse-copy large_file seek-append
 lib = ../lib
 
 all: $(programs)
@@ -19,6 +19,9 @@ sparse-copy: sparse-copy.c $(lib)/error_functions.c
 
 large_file: large_file.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib) -D_FILE_OFFSET_BITS=64
+
+seek-append: seek-append.c $(lib)/error_functions.c
+	$(CC) $+ -o $@ -I$(lib)
 
 clean:
 	rm -f $(programs)
