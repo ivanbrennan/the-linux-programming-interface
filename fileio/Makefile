@@ -1,11 +1,14 @@
 CC = gcc
 
-programs = copy seek_io tee sparse-copy large_file seek-append atomic_append
+programs = copy dup seek_io tee sparse-copy large_file seek-append atomic_append
 lib = ../lib
 
 all: $(programs)
 
 copy: copy.c $(lib)/error_functions.c
+	$(CC) $+ -o $@ -I$(lib)
+
+dup: dup.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 seek_io: seek_io.c $(lib)/error_functions.c $(lib)/get_num.c
