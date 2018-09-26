@@ -1,4 +1,17 @@
+#include <fcntl.h>
 #include "tlpi_hdr.h"
+
+int
+fdup(int oldfd)
+{
+	int newfd;
+	newfd = fcntl(oldfd, F_DUPFD, 0);
+
+	if (newfd == -1)
+		exit(EXIT_FAILURE);
+
+	return(newfd);
+}
 
 int
 main(int argc, char *argv[])
@@ -8,7 +21,7 @@ main(int argc, char *argv[])
 	char buf[1];
 
 	oldfd = 0;
-	newfd = dup(oldfd);
+	newfd = fdup(oldfd);
 
 	fd = oldfd;
 	while (1) {
