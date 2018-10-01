@@ -1,6 +1,6 @@
 CC = gcc
 
-programs = copy dup dup2 dupshare seek_io tee sparse-copy large_file seek-append atomic_append nwrites
+programs = copy dup dup2 dupshare seek_io tee sparse-copy large_file seek-append atomic_append nwrites t-readv
 lib = ../lib
 
 all: $(programs)
@@ -36,6 +36,9 @@ atomic_append: atomic_append.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 nwrites: nwrites.c $(lib)/error_functions.c
+	$(CC) $+ -o $@ -I$(lib)
+
+t-readv: t-readv.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 clean:
