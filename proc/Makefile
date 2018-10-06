@@ -1,6 +1,6 @@
 CC = gcc
 
-programs = display-env modify-env longjump setjmp-vars mem-segments
+programs = display-env modify-env longjump setjmp-vars mem-segments badjmp
 
 lib = ../lib
 
@@ -19,6 +19,9 @@ setjmp-vars: setjmp_vars.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 mem-segments: mem_segments.c $(lib)/error_functions.c
+	$(CC) $+ -o $@ -I$(lib)
+
+badjmp: badjmp.c $(lib)/error_functions.c
 	$(CC) $+ -o $@ -I$(lib)
 
 clean:
