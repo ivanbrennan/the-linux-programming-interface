@@ -34,6 +34,7 @@ main(int argc, char *argv[])
 		ptr[j] = malloc(blockSize);
 		if (ptr[j] == NULL)
 			errExit("malloc");
+		printf("After malloc(), program break is: %10p\n", sbrk(0));
 	}
 
 	printf("Program break is now:	%10p\n", sbrk(0));
